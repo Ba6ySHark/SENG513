@@ -210,3 +210,16 @@
         line-height: 1rem;
     }
 }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spin {
+    animation: spin 5s infinite linear; /* 5-second spin, infinite loop */
+}

@@ -42,7 +42,7 @@
                 <p class="card">Cost-effective</p>
                 <p class="card">User-friendly</p>
             </div>
-            <button class="accent-button">Shop Now!</button>
+            <button class="accent-button" id="disintegrateBtn">Shop Now!</button>
         </article>
     </section>
     <section class="about-section">
@@ -71,6 +71,10 @@
       
           track.style.animationDuration = `${duration}s`;
         };
+
+        document.getElementById("disintegrateBtn").addEventListener("click", function() {
+            document.body.classList.add("spin");
+        });
     </script>              
 </body>
 </html>
