@@ -1,8 +1,25 @@
-.custom-bg {
-    background-image: url('images/background-extra-large.jpg');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+.hero-section {
+    background-color: #e9f6fd;
+}
+
+.features-section {
+    background-color: #daf0fc;
+}
+
+.feature {
+    border: none;
+}
+
+.feature:first-of-type {
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.about-section {
+    background-color: #c9ebfd;
+}
+
+.cta-section {
+    background-color: #b6e5ff;
 }
 
 .relative {
@@ -29,6 +46,14 @@
 
 .text-white {
     color: #fff;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 600px;
+    row-gap: 10px;
+    column-gap: 10px;
 }
 
 .flex {
@@ -71,7 +96,27 @@
     padding: 0
 }
 
-/* Styling the carousel container */
+.accent-button {
+    background-color: #FF6F61;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid #FF6F61;
+    color: #fff;
+}
+
+.accent-button:hover {
+    color: #000;
+    background-color: #fff;
+    transition: 400ms;
+}
+
+.custom-bg {
+    background-image: url('images/background-extra-large.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .carousel {
     width: 600px;
     overflow: hidden;
@@ -79,35 +124,31 @@
     box-sizing: border-box;
 }
   
-  /* The track that moves */
 .carousel-track {
     display: inline-block;
     white-space: nowrap;
     will-change: transform;
     animation: scroll linear infinite;
 }
-  
-  /* Style the text items */
-.carousel p {
+
+.card {
     display: inline-block;
-    padding: 0 20px;
+    margin: 5px;
+    padding: 10px;
     font-size: 24px;
     width: 250px;
-    /* box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);  */
     border-radius: 5px;
     backdrop-filter: blur(14px); 
-    background-color: rgba(255, 255, 255, 0.2); 
-    padding: 10px; 
+    background-color: rgba(255, 255, 255, 0.2);
     text-align: center; 
 }
-  
-  /* Keyframes for infinite scrolling effect */
+
 @keyframes scroll {
     0% {
       transform: translateX(0);
     }
     100% {
-      transform: translateX(-50%); /* Move halfway to ensure continuous looping */
+      transform: translateX(-50%);
     }
 }
 
@@ -149,6 +190,11 @@
 
     .carousel {
         width: 100%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        width: 270px;
     }
 }
 
