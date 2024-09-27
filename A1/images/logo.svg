@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.0"
+  xmlns="http://www.w3.org/2000/svg">
+  <symbol id="logo" viewBox="0 0 60 60">
+    <path transform="translate(0 -.17995)" d="m11.719 4.9375-7.4065 7.4375v42.031c0 1.108 0.892 2 2 2h47.468c1.109 0 2.001-0.892 2.001-2v-47.468c0-1.1085-0.892-2.0005-2-2.0005h-42.062z" fill="#b3b3b3" fill-rule="evenodd" stroke="#333" stroke-width="3.125"/>
+    <path transform="matrix(1.0984 0 0 1.0984 -5.3453 -4.0048)" d="m54.344 31.569a21.953 21.953 0 1 0-43.907 0 21.953 21.953 0 1 0 43.907 0h-21.954z" fill="#7f7f7f" fill-rule="evenodd" stroke="#333" stroke-width="1.7071"/>
+    <path transform="matrix(.74286 0 0 .74286 70.6 -10.417)" d="m-41.747 56.761a12.596 12.596 0 1 0-25.193 0 12.596 12.596 0 1 0 25.193 0h-12.597z" fill="#4c4c4c" fill-rule="evenodd" stroke="#333" stroke-width="1.6827"/>
+    <path transform="matrix(.55 0 0 .55 60.21 .43999)" d="m-41.747 56.761a12.596 12.596 0 1 0-25.193 0 12.596 12.596 0 1 0 25.193 0h-12.597z" fill="#b3b3b3" fill-rule="evenodd" stroke="#333" stroke-width="1.6827"/>
+    <rect transform="translate(0 -.17995)" x="23.213" y="5.2965" width="14.396" height="21.593" rx="1" fill="#4c4c4c" fill-rule="evenodd" stroke="#333" stroke-width="1.875"/>
+  </symbol>
+</svg>
