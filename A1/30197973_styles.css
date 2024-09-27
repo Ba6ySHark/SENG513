@@ -7,6 +7,15 @@
 
 .flex {
     display: flex;
+    gap: 8rem;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
 
 .w-75 {
@@ -15,6 +24,14 @@
 
 .h-75 {
     height: 75%;
+}
+
+.m-0 {
+    margin: 0;
+}
+
+.p-0 {
+    padding: 0
 }
 
 @media (max-width: 2560px) {
