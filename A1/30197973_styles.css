@@ -1,0 +1,58 @@
+.custom-bg {
+    background-image: url('images/background-extra-large.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.flex {
+    display: flex;
+}
+
+.w-75 {
+    width: 75%;
+}
+
+.h-75 {
+    height: 75%;
+}
+
+@media (max-width: 2560px) {
+    .custom-bg {
+        background-image: url('images/background-extra-large.jpg');
+        width: 1000px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 1920px) {
+    .custom-bg {
+        background-image: url('images/background-large.jpg');
+        width: 800px;
+        height: 220px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .custom-bg {
+        background-image: url('images/background-medium.jpg');
+        width: 600px;
+        height: 170px;
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-bg {
+        background-image: url('images/background-small.jpg');
+        width: 400px;
+        height: 110px;
+    }
+}
+
+@media (max-width: 640px) {
+    .custom-bg {
+        background-image: url('images/background-extra-small.jpg');
+        width: 300px;
+        height: 90px;
+    }
+}
