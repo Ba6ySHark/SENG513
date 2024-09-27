@@ -9,21 +9,30 @@
 <body>
     <header class="hero-section flex justify-center">
         <!-- I can't get this to work -->
-        <div class="flex justify-between custom-bg">
-            <svg class="m-0 p-0" style="margin: 0; padding: 0" xmlns="http://www.w3.org/2000/svg" alt="our-logo">
+        <div class="flex items-center custom-bg" style="padding: 20px;">
+            <svg style="height: 75%; aspect-ratio: 1;" xmlns="http://www.w3.org/2000/svg" alt="our-logo">
                 <use href="images/logo.svg#logo" />
             </svg>
-            <h1>Welcome to Application</h1>
-            <!-- This section should have a background image behind the Welcome to Application -->
+            <h1 class="flex-1 text-xl md:text-md sm:text-sm text-white">Welcome to Application</h1>
+            <!-- This section should have a background image behind the Welcome to Application --> 
         </div>
     </header>
     <!-- I really wish we could have a flourish in the background of these feature-section -->
 
     <!-- Each of these sections should have colours that compliment the colour of our background image and the foreground image -->
     <section class="features-section">
-        <article class="feature">
+        <article class="feature flex flex-col items-center">
             <h2>Top 5 Reasons to Choose Us</h2>
-            <p>Why would you want to choose us? Here are the top 5 reasons why we are the best: 1. Quality Assurance, 2. 24/7 Customer Support, 3. Affordable Pricing, 4. Expert Team, Fast Delivery</p>
+            <p>Why would you want to choose us? Here are the top reasons why we are the best:</p>
+            <div class="carousel">
+                <div class="carousel-track">
+                  <p>Quality Assurance</p>
+                  <p>24/7 Customer Support</p>
+                  <p>Affordable Pricing</p>
+                  <p>Expert Team</p>
+                  <p>Fast Delivery</p>
+                </div>
+            </div>
         </article>
         <article class="feature">
             <h2>Our Products include:</h2>
@@ -42,5 +51,23 @@
         <p>Get in touch for more information.</p>
         <button>Contact Us</button>
     </footer>
+    <script>
+        window.onload = function() {
+          const track = document.querySelector('.carousel-track');
+          const content = track.innerHTML; // Get current content
+          
+          // Duplicate the content inside the carousel track
+          track.innerHTML += content;
+      
+          const trackWidth = track.scrollWidth;  // Total width of the content
+          const containerWidth = document.querySelector('.carousel').offsetWidth;
+      
+          // Adjust the animation duration dynamically based on the content's width
+          const duration = (trackWidth / containerWidth) * 10; // Adjust the speed factor as needed
+      
+          // Apply the animation duration for infinite looping
+          track.style.animationDuration = `${duration}s`;
+        };
+    </script>              
 </body>
 </html>

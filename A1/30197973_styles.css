@@ -5,9 +5,42 @@
     background-repeat: no-repeat;
 }
 
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.top-0 {
+    top: 0;
+}
+
+.text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.text-xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.text-white {
+    color: #fff;
+}
+
 .flex {
     display: flex;
-    gap: 8rem;
+}
+
+.flex-1 {
+    flex-grow: 1;
+}
+
+.flex-col {
+    flex-direction: column;
 }
 
 .justify-center {
@@ -16,6 +49,10 @@
 
 .justify-between {
     justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
 }
 
 .w-75 {
@@ -32,6 +69,46 @@
 
 .p-0 {
     padding: 0
+}
+
+/* Styling the carousel container */
+.carousel {
+    width: 600px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+  
+  /* The track that moves */
+.carousel-track {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+    animation: scroll linear infinite;
+}
+  
+  /* Style the text items */
+.carousel p {
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 24px;
+    width: 250px;
+    /* box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2);  */
+    border-radius: 5px;
+    backdrop-filter: blur(14px); 
+    background-color: rgba(255, 255, 255, 0.2); 
+    padding: 10px; 
+    text-align: center; 
+}
+  
+  /* Keyframes for infinite scrolling effect */
+@keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Move halfway to ensure continuous looping */
+    }
 }
 
 @media (max-width: 2560px) {
@@ -56,6 +133,11 @@
         width: 600px;
         height: 170px;
     }
+
+    .md\:text-md {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -64,6 +146,10 @@
         width: 400px;
         height: 110px;
     }
+
+    .carousel {
+        width: 100%;
+    }
 }
 
 @media (max-width: 640px) {
@@ -71,5 +157,10 @@
         background-image: url('images/background-extra-small.jpg');
         width: 300px;
         height: 90px;
+    }
+
+    .sm\:text-sm {
+        font-size: 0.75rem;
+        line-height: 1rem;
     }
 }
