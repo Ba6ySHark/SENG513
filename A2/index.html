@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customizable Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    #question {
+      margin: 20px 0;
+      font-size: 24px;
+    }
+    #choices {
+      margin: 20px 0;
+    }
+    #choices button {
+      margin-right: 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+    #submit, #next {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+    #score {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz Application</h1>
+
+  <!-- Display the current question -->
+  <div id="question"></div>
+
+  <!-- Display answer choices as buttons -->
+  <div id="choices"></div>
+
+  <!-- Button for submitting the answer -->
+  <button id="submit">Submit</button>
+
+  <!-- Button for moving to the next question -->
+  <button id="next" style="display:none;">Next</button>
+
+  <!-- Display the score -->
+  <div id="score">Score: 0</div>
+
+  <!-- Include your JavaScript file -->
+  <script src="index.js"></script>
+</body>
+</html>

@@ -80,19 +80,24 @@ class QuizUI {
     }
   
     showQuestion(question) {
-      this.questionElement.innerHTML = question.text;
-      this.choicesContainer.innerHTML = '';
-  
-      // Use call to invoke the function on each choice with the correct context
-      question.choices.forEach(choice => {
-        const choiceButton = document.createElement('button');
-        choiceButton.innerText = choice;
-  
-        // Use apply to handle multiple arguments if necessary (e.g., event and choice)
-        choiceButton.addEventListener('click', this.handleChoice.apply(this, [choice]));
-        this.choicesContainer.appendChild(choiceButton);
-      });
-    }
+        this.questionElement.innerHTML = question.text;
+        this.choicesContainer.innerHTML = '';
+      
+        // Clear any previous event listeners
+        const choiceButtons = Array.from(this.choicesContainer.querySelectorAll('button'));
+        choiceButtons.forEach(button => button.removeEventListener('click', this.handleChoice));
+      
+        // Create new buttons for each choice
+        question.choices.forEach(choice => {
+          const choiceButton = document.createElement('button');
+          choiceButton.innerText = choice;
+      
+          // Add event listener for each choice, bind the correct context
+          choiceButton.addEventListener('click', () => this.handleChoice(choice));
+      
+          this.choicesContainer.appendChild(choiceButton);
+        });
+      }      
   
     // Method to handle user choice
     handleChoice(choice) {
