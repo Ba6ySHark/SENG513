@@ -39,6 +39,7 @@ class QuizUI {
     constructor(quiz, user) {
       this.quiz = quiz;
       this.user = user;
+      this.greetingSplash = document.getElementById('greeting');
       this.submitButton = document.getElementById('submit');
       this.choicesContainer = document.getElementById('choices');
       this.questionElement = document.getElementById('question');
@@ -48,6 +49,8 @@ class QuizUI {
       // Bind event handlers to `this`
       this.submitButton.addEventListener('click', this.submitAnswer.bind(this));
       this.nextButton.addEventListener('click', this.showNextQuestion.bind(this));
+
+      this.greetingSplash.innerHTML = `Hello, ${this.user.username}`
 
       // Start by showing the first question
       this.showQuestion(this.quiz.getCurrentQuestion());
