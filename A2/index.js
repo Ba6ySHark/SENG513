@@ -32,7 +32,8 @@ class Quiz {
     }
   
     getCurrentQuestion() {
-      return this.questions[this.currentQuestionIndex];
+        console.log(this.questions[this.currentQuestionIndex]);
+        return this.questions[this.currentQuestionIndex];
     }
   
     isFinished() {
@@ -138,6 +139,7 @@ class QuizUI {
   
     // Show the next question or the final score if the quiz is finished
     showNextQuestion() {
+        this.quiz.currentQuestionIndex++;
       if (!this.quiz.isFinished()) {
         // Move to the next question
         this.showQuestion(this.quiz.getCurrentQuestion());
