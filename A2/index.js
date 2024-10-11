@@ -1,4 +1,3 @@
-// User class
 class User {
     constructor(username) {
         this.username = username;
@@ -10,7 +9,6 @@ class User {
     }
 }
 
-// Quiz class
 class Quiz {
     constructor(questions) {
       this.questions = questions;
@@ -34,7 +32,6 @@ class Quiz {
     }
 }
 
-// QuizUI class to handle the user interface
 class QuizUI {
     constructor(quiz, user) {
       this.quiz = quiz;
@@ -46,15 +43,13 @@ class QuizUI {
       this.scoreElement = document.getElementById('score'); // Grab the score element from the HTML
       this.nextButton = document.getElementById('next');
 
-      // Bind event handlers to `this`
       this.submitButton.addEventListener('click', this.submitAnswer.bind(this));
       this.nextButton.addEventListener('click', this.showNextQuestion.bind(this));
 
       this.greetingSplash.innerHTML = `Hello, ${this.user.username}`
 
-      // Start by showing the first question
       this.showQuestion(this.quiz.getCurrentQuestion());
-      this.updateScore();  // Update the score display initially
+      this.updateScore();
     }
 
     showQuestion(question) {
@@ -65,7 +60,6 @@ class QuizUI {
         const choiceButton = document.createElement('button');
         choiceButton.innerText = choice;
 
-        // Handle the user's choice
         choiceButton.addEventListener('click', () => this.handleChoice(choice));
         this.choicesContainer.appendChild(choiceButton);
       });
@@ -78,8 +72,8 @@ class QuizUI {
       const buttons = this.choicesContainer.querySelectorAll('button');
       buttons.forEach(button => button.disabled = true);
 
-      if (this.quiz.guess(choice)) {  // Check if the answer is correct
-        this.user.updateScore();  // Update user's score
+      if (this.quiz.guess(choice)) {
+        this.user.updateScore();
         alert('Correct!');
       } else {
         alert('Wrong!');
@@ -88,7 +82,6 @@ class QuizUI {
       this.submitButton.style.display = 'none';
       this.nextButton.style.display = 'inline';
 
-      // Update the score display dynamically
       this.updateScore();
     }
 
@@ -98,7 +91,6 @@ class QuizUI {
     }
 
     updateScore() {
-      // Update the score display dynamically in the HTML
       this.scoreElement.innerText = `Score: ${this.user.score}`;
     }
 
@@ -118,7 +110,6 @@ class QuizUI {
     }
 }
 
-// Function to fetch questions from the Open Trivia DB
 async function fetchQuestions() {
     const response = await fetch('https://opentdb.com/api.php?amount=5&type=multiple');
     const data = await response.json();
@@ -128,7 +119,6 @@ async function fetchQuestions() {
     return questions;
 }
 
-// Question class
 class Question {
     constructor(text, choices, correctAnswer) {
         this.text = text;
