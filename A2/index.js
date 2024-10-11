@@ -26,27 +26,27 @@ class User {
 // Quiz class
 class Quiz {
     constructor(questions) {
-        this.questions = questions;
-        this.currentQuestionIndex = 0;
-        this.score = 0;
+      this.questions = questions;
+      this.currentQuestionIndex = 0;
+      this.score = 0;
     }
-
+  
     getCurrentQuestion() {
-        return this.questions[this.currentQuestionIndex];
+      return this.questions[this.currentQuestionIndex];
     }
-
+  
     isFinished() {
-        return this.currentQuestionIndex >= this.questions.length;
+      return this.currentQuestionIndex >= this.questions.length;
     }
-
+  
     guess(answer) {
-        if (this.getCurrentQuestion().isCorrectAnswer.call(this.getCurrentQuestion(), answer)) {
-        // Use `call` to invoke the isCorrectAnswer method explicitly with the correct context
+      if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
         this.score++;
-        }
-        this.currentQuestionIndex++;
+      }
+      // Increment the question index to move to the next question
+      this.currentQuestionIndex++;
     }
-}
+  }  
 
 function* questionGenerator(quiz) {
     while (!quiz.isFinished()) {
@@ -74,64 +74,83 @@ class QuizUI {
       this.scoreElement = document.getElementById('score');
       this.nextButton = document.getElementById('next');
   
-      // Use bind to preserve the correct `this` in the callbacks
+      // Bind event handlers to `this`
       this.submitButton.addEventListener('click', this.submitAnswer.bind(this));
       this.nextButton.addEventListener('click', this.showNextQuestion.bind(this));
+  
+      // Start by showing the first question
+      this.showQuestion(this.quiz.getCurrentQuestion());
     }
   
+    // Method to display the question and choices
     showQuestion(question) {
-        this.questionElement.innerHTML = question.text;
-        this.choicesContainer.innerHTML = '';
-      
-        // Clear any previous event listeners
-        const choiceButtons = Array.from(this.choicesContainer.querySelectorAll('button'));
-        choiceButtons.forEach(button => button.removeEventListener('click', this.handleChoice));
-      
-        // Create new buttons for each choice
-        question.choices.forEach(choice => {
-          const choiceButton = document.createElement('button');
-          choiceButton.innerText = choice;
-      
-          // Add event listener for each choice, bind the correct context
-          choiceButton.addEventListener('click', () => this.handleChoice(choice));
-      
-          this.choicesContainer.appendChild(choiceButton);
-        });
-      }      
+      this.questionElement.innerHTML = question.text;
+      this.choicesContainer.innerHTML = '';
   
-    // Method to handle user choice
+      // Create buttons for each choice
+      question.choices.forEach(choice => {
+        const choiceButton = document.createElement('button');
+        choiceButton.innerText = choice;
+  
+        // Handle the user's choice
+        choiceButton.addEventListener('click', () => this.handleChoice(choice));
+        this.choicesContainer.appendChild(choiceButton);
+      });
+  
+      // Show the submit button and hide the next button initially
+      this.submitButton.style.display = 'inline';
+      this.nextButton.style.display = 'none';
+    }
+  
+    // Handle the user choice, show the correct alert, and allow moving to the next question
     handleChoice(choice) {
-      // Use call to invoke isCorrectAnswer with correct context
-      if (this.quiz.getCurrentQuestion().isCorrectAnswer.call(this.quiz.getCurrentQuestion(), choice)) {
+      const buttons = this.choicesContainer.querySelectorAll('button');
+      buttons.forEach(button => button.disabled = true);
+  
+      if (this.quiz.getCurrentQuestion().isCorrectAnswer(choice)) {
         this.user.updateScore();
         alert('Correct!');
       } else {
         alert('Wrong!');
       }
+  
+      // Show the "Next" button and hide "Submit" after answering
+      this.submitButton.style.display = 'none';
+      this.nextButton.style.display = 'inline';
     }
   
+    // Submit the current answer and move to the next question
     submitAnswer() {
-      const selectedChoice = this.choicesContainer.querySelector('button.active').innerText;
+      const selectedChoice = this.choicesContainer.querySelector('button.active');
+      if (selectedChoice) {
+        this.quiz.guess(selectedChoice.innerText);
+        this.updateScore();
+      }
   
-      // Use bind to ensure `this` is preserved when `guess` is called
-      this.quiz.guess.bind(this.quiz)(selectedChoice);
-      this.updateScore();
+      this.submitButton.style.display = 'none';
+      this.nextButton.style.display = 'inline';
     }
   
+    // Update the score display
     updateScore() {
-      // No need to use bind, call, or apply here, but you could if needed
       this.scoreElement.innerText = `Score: ${this.user.score}`;
     }
   
+    // Show the next question or the final score if the quiz is finished
     showNextQuestion() {
       if (!this.quiz.isFinished()) {
-        // Use apply to dynamically call showQuestion with the next question
-        this.showQuestion.apply(this, [this.quiz.getCurrentQuestion()]);
+        // Move to the next question
+        this.showQuestion(this.quiz.getCurrentQuestion());
+  
+        // Reset the buttons for the next question
+        this.submitButton.style.display = 'inline';
+        this.nextButton.style.display = 'none';
       } else {
-        this.showFinalScore.call(this); // Use call to invoke the function immediately with this context
+        this.showFinalScore();
       }
     }
   
+    // Show the final score at the end of the quiz
     showFinalScore() {
       alert(`Final Score: ${this.user.score}`);
     }
