@@ -50,7 +50,13 @@
         <p>Information about the company.</p>
         <p>Click this link, it opens in a new window: <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN Docs</a></p>
         <!-- Insert the company image here, it's in the images directory called image-<size>.png -->
-        <img style="width: 50%;" src="images/image-extra-large.png" srcset="images/image-small.png 768w, images/image-medium.png 1024w, images/image-large.png 1920w, images/image-extra-large.png 2560w" alt="Company Image">       
+            <picture>
+                <source media="(max-width: 768px)" srcset="images/image-small.png">
+                <source media="(max-width: 1024px)" srcset="images/image-medium.png">
+                <source media="(max-width: 1920px)" srcset="images/image-large.png">
+                <source media="(min-width: 1921px)" srcset="images/image-extra-large.png">
+                <img style="width: 50%;" src="images/image-extra-large.png" alt="Company Image">
+            </picture>                   
     </section>
     <footer class="cta-section flex flex-col items-center">
         <h2>Contact Us</h2>
