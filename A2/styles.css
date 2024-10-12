@@ -49,7 +49,7 @@ h1 {
     transition: 300ms;
 }
 
-#submit, #next {
+#submit, #next, #restart {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 18px;
