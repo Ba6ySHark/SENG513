@@ -27,9 +27,9 @@ class Quiz {
       this.currentQuestionIndex = 0;
     }
 
-    *questionGenerator() {
+    *getQuestionGenerator() {
         for (let i = 0; i < this.questions.length; i++) {
-            yield this.questions[i];  // Yield the current question
+            yield this.questions[i];
         }
     }
 
@@ -63,13 +63,15 @@ class QuizUI {
       this.restartButton = document.getElementById('restart');
       this.counter = document.getElementById('counter');
 
+      this.generator = this.quiz.getQuestionGenerator();
+
       this.submitButton.addEventListener('click', this.submitAnswer.bind(this));
       this.nextButton.addEventListener('click', this.showNextQuestion.bind(this));
       this.restartButton.addEventListener('click', () => window.location.reload());
 
       this.greetingSplash.innerHTML = `Hello, ${this.user.username}`
 
-      this.showQuestion(this.quiz.getCurrentQuestion());
+      this.showQuestion(this.generator.next().value);
       this.updateScore();
     }
 
@@ -118,9 +120,9 @@ class QuizUI {
     }
 
     showNextQuestion() {
-      this.quiz.incrementQuestionIndex();
+      // this.quiz.incrementQuestionIndex();
       if (!this.quiz.isFinished()) {
-        this.showQuestion(this.quiz.getCurrentQuestion());
+        this.showQuestion(this.generator.next().value);
         this.submitButton.style.display = 'inline';
         this.nextButton.style.display = 'none';
       } else {
